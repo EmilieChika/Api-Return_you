@@ -11,3 +11,40 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+label {
+  font-weight: bold;
+  display: flex;
+  margin-bottom: 5px;
+  margin-left: 150px;
+}
+
+
+input[type='text'],
+input[type='email'] {
+  display: block;
+
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  margin-left: 150px;
+}
+
+#comments {
+  width: 300px;
+  height: 100px;
+}
+
+button {
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin-top: 4px;
+}
+

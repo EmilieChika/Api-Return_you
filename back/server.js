@@ -1,16 +1,21 @@
-function dbconnect (){
-    let mysql = require('mysql');
-    let connection = mysql.createConnection({
-        host : 'localhost',
-        user : 'root',
-        password : '',
-        database : ''
-    });
-    connection.connect();
+const { MongoClient } = require('mongodb');
 
-    return connection
+async function main (){
+    const uri = "mongodb+srv://calendar:calendarPassword@calendar.90j6m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
+    const client = new MongoClient(uri);
+
+    try {
+       await client.connect(); 
+    } catch (e) {
+        console.error(e);
+    } finally{
+        await client.close();
+    }
+    
 }
 
+main().catch(console.error);
 
 //------------CRUD-----------
 

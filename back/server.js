@@ -1,17 +1,3 @@
-function dbconnect (){
-    let mysql = require('mysql');
-    let connection = mysql.createConnection({
-        host : 'localhost',
-        user : 'root',
-        password : '',
-        database : ''
-    });
-    connection.connect();
-
-    return connection
-}
-
-
 //------------CRUD-----------
 
 
@@ -49,5 +35,7 @@ function deleteAppointement(){
 
     db.query(/* DELETE FROM  ...*/) 
 
+
 }
+
 

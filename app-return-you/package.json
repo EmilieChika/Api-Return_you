@@ -12,7 +12,8 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.1",
     "express": "latest",
-    "mongoose": "latest"
+    "mongoose": "latest",
+    "mongodb": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

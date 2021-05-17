@@ -4,14 +4,16 @@ const Schema = mongoose.Schema;
 
 //Synchro with columns
 const AppointmentSchema = new mongoose.Schema({
-    appointment: {
-        date: String,
+    date: {
+        type: String,
+        required : false
         //date: Date,
         //hours: int
 
     },
-    clients:  {
-        firstname: String,
+    hours:  {
+        type: String,
+        required : true
         //lastname: String,
         //email: String,
         //comments: String,
@@ -22,5 +24,5 @@ const AppointmentSchema = new mongoose.Schema({
 
 
 // Create Schema and access Appoitment objet
-const Appointment = mongoose.model("Appointment", AppointmentSchema)
-module.exports = Appointment;
+const AppointmentData = mongoose.model("AppointmentData", AppointmentSchema)
+module.exports = AppointmentData;

@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const Schema = mongoose.Schema;
+
 
 //Synchro with columns
 const AppointmentSchema = new mongoose.Schema({

@@ -3,6 +3,9 @@ const mongoose = require("mongoose");
 const app = express();
 
 const AppointmentModels  = require("./models/Appoitment");
+const ClientModels = require("./models/client")
+
+const DateNow = new Date()
 
 //midlewares permit to allow and receive informations from front-end in json
 app.use(express.json());
@@ -20,18 +23,38 @@ try{
 
 app.get("/", async (req,res) =>{
 
-const appointment = new AppointmentModels({appointment: "15-05-2021", clients : "azertyuiop"});
+const appointment = new AppointmentModels(
+    {
+        date: DateNow.toLocaleDateString(undefined), 
+        hours : DateNow.toLocaleTimeString(undefined)
+    });
 
     try {
         await appointment.save();
         res.send("data good");
         console.log("oifoijij")
+        console.log(DateNow.toLocaleDateString(undefined))
 
     } catch(err) {
         console.log(err)
     }
 
+const client = new ClientModels(
+    {
+        firstName: "Benoit",
+        lastName: "tarentula",
+        emailAdress: "benoit.tarentula@gmail.com" 
+    });
+
+    try {
+        await client.save();
+    }catch(err) {
+        console.log(err)
+    }
 });
+
+
+
 
 
 // Express Server

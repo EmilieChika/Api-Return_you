@@ -2,14 +2,14 @@ const mongoose = require('mongoose')
 
 //Synchro with columns
 const AppointmentSchema = new mongoose.Schema({
-    appointment: {
+    date: {
         type: String,
-        required : true
+        required : false
         //date: Date,
         //hours: int
 
     },
-    clients:  {
+    hours:  {
         type: String,
         required : true
         //lastname: String,

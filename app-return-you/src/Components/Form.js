@@ -6,7 +6,9 @@ function Form() {
         <div >
             <form >
                 <label htmlFor = 'firstname' > Prénom </label>
-                    <input type = 'text' id = 'firstname' firstname = 'firstname' placeholder="Entrer votre prénom"/>
+                    <input type = 'text' id = 'firstname' firstname = 'firstname' placeholder="Entrer votre prénom" onChange={(event)=>{
+                        setAppointment(event.target.value);
+                    }}/>
 
                     <label htmlFor = 'lastname' > Nom </label>
                         <input type = 'text' id = 'lastname' lastname = 'lastname' placeholder="Entrer votre nom"/>

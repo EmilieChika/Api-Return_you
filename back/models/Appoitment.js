@@ -3,13 +3,15 @@ const mongoose = require('mongoose')
 //Synchro with columns
 const AppointmentSchema = new mongoose.Schema({
     appointment: {
-        date: String,
+        type: String,
+        required : true
         //date: Date,
         //hours: int
 
     },
     clients:  {
-        firstname: String,
+        type: String,
+        required : true
         //lastname: String,
         //email: String,
         //comments: String,
@@ -20,5 +22,5 @@ const AppointmentSchema = new mongoose.Schema({
 
 
 // Create Schema and access Appoitment objet
-const Appointment = mongoose.model("Appointment", AppointmentSchema)
-module.exports = Appointment;
+const AppointmentData = mongoose.model("AppointmentData", AppointmentSchema)
+module.exports = AppointmentData;

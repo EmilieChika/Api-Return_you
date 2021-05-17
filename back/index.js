@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
+import clientsTitle
 
 const AppointmentModels  = require("./models/Appoitment");
 const ClientModels = require("./models/client")
@@ -21,7 +22,10 @@ try{
     console.error(e);
 }
 
-app.get("/", async (req,res) =>{
+app.post("/insert", async (req,res) =>{
+
+    const clientsTitle = req.body.clientsTitle
+
 
 const appointment = new AppointmentModels(
     {

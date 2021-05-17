@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 
 
 function Form() {
@@ -6,9 +6,7 @@ function Form() {
         <div >
             <form >
                 <label htmlFor = 'firstname' > Prénom </label>
-                    <input type = 'text' id = 'firstname' firstname = 'firstname' placeholder="Entrer votre prénom" onChange={(event)=>{
-                        setAppointment(event.target.value);
-                    }}/>
+                    <input type = 'text' id = 'firstname' firstname = 'firstname' placeholder="Entrer votre prénom" />
 
                     <label htmlFor = 'lastname' > Nom </label>
                         <input type = 'text' id = 'lastname' lastname = 'lastname' placeholder="Entrer votre nom"/>
@@ -33,3 +31,4 @@ function Form() {
 }
 
 export default Form
+*/

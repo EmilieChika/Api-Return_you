@@ -23,6 +23,6 @@ const AppointmentSchema = new mongoose.Schema({
 })
 
 
-// Create Schema and access Appoitment objet
+// Create Schema and access Appointment object
 const AppointmentData = mongoose.model("AppointmentData", AppointmentSchema)
 module.exports = AppointmentData;

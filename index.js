@@ -88,6 +88,16 @@ const client = new ClientModels(
 
 });*/
 
+//READ : in that method i made a read in bdd, it's either global data or detailed with find{$where : { firstName: "Benoit" }} 
+app.get('/read', async (req,res) => {
+    ClientModels.find({}, (err, result) => {
+        if (err) {
+            res.send(err);
+        }
+        res.send(result)
+    })
+})  
+
 app.listen(PORT, console.log('Server is running correctly'));
 
 

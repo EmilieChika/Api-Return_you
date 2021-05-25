@@ -14,21 +14,12 @@ const ClientSchema = new mongoose.Schema({
         required : true
 
     },
-    emailAddress:  {
+    email:  {
         type: String,
         required : true
 
     },
-    appointmentTitle :  {
-        type: String,
-        required : true
-
-    },
-    appointmentComments :  {
-        type: String,
-        required : true
-
-    },
+    
 
 
 

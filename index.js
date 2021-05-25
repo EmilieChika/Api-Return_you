@@ -21,7 +21,7 @@ app.use(cors());
 
 try{
     console.log("lalalala")
-        mongoose.connect(process.env.DB_URI_PASSWORD, {
+        mongoose.connect(process.env.DB_PASSWORD, {
             useNewUrlParser: true,
 
     })

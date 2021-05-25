@@ -4,21 +4,22 @@ const Schema = mongoose.Schema;
 
 //Synchro with columns
 const AppointmentSchema = new mongoose.Schema({
-    date: {
-        type: String,
-        required : false
-        //date: Date,
-        //hours: int
-
-    },
-    hours:  {
+    dateAndHours: {
         type: String,
         required : true
-        //lastname: String,
-        //email: String,
-        //comments: String,
 
-    }
+    },
+    
+    appointmentTitle :  {
+        type: String,
+        required : true
+
+    },
+    appointmentComments :  {
+        type: String,
+        required : true
+
+    },
 
 })
 

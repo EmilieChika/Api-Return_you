@@ -1,14 +1,14 @@
+require('dotenv').config()
+
 const express = require("express");
 const mongoose = require("mongoose");
 //const cors = require('cors');
 const path = require ('path');
+const cors = require ('cors');
+
 
 //Initialize express application
 const app = express();
-const PORT = process.env.PORT || 8080;
-
-
-
 const AppointmentModels  = require("./models/Appoitment");
 const ClientModels = require("./models/client")
 
@@ -17,12 +17,11 @@ const DateNow = new Date()
 //midlewares permit to allow and receive informations from front-end in json
 app.use(express.json());
 app.use(express.static(__dirname+'/front/build'));
-
-//app.use(cors());
+app.use(cors());
 
 try{
     console.log("lalalala")
-        mongoose.connect('mongodb+srv://calendar:calendarPassword@calendar.90j6m.mongodb.net/appointment?retryWrites=true&w=majority', {
+        mongoose.connect(process.env.DB_PASSWORD, {
             useNewUrlParser: true,
 
     })
@@ -31,62 +30,54 @@ try{
     console.error(e);
 }
 
-app.post("/api/insert", async (req,res) =>{
+app.post("/insert", async (req,res) =>{
 
-    /*const clientsTitle = req.body.clientsTitle
-    const clientsfirstName = req.body.clientsfirstName
-    const clientsLastName = req.body.clientsLastName
-    const clientsEmail = req.body.clientsEmail
-    const appointmentClient = req.body.appointmentClient
-    const clientsComments = req.body.clientsComments*/
+    const firstName = req.body.firstName
+    const lastName = req.body.lastName
+    const email = req.body.emailAddress
+    const date = req.body.date
+    const appointmentTitle= req.body.appointmentTitle
+    const appointmentComments = req.body.appointmentComments
+    console.log("DATE:"+date)
 
 
+    const appointment = new AppointmentModels(
+        {   
+            dateAndHours : date,
+            appointmentTitle :appointmentTitle,
+            appointmentComments : appointmentComments
 
-const appointment = new AppointmentModels(
-    {
-        //date: DateNow.toLocaleDateString(undefined),
-        hours : DateNow.toLocaleTimeString(undefined),
-        date: appointmentClient,
-        //hours: appointmentClients
+            /*date: DateNow.toLocaleDateString(undefined),
+            hours : DateNow.toLocaleTimeString(undefined),*/
+            //date: appointmentClient,
+            //hours: appointmentClients
+        });
+
+        try {
+            await appointment.save();
+            console.log("oifoijij")
+            console.log(DateNow.toLocaleDateString(undefined))
+
+        } catch(err) {
+            console.log(err)
+        }
+
+        
+    const client = new ClientModels(
+        {
+            firstName: firstName,
+            lastName: lastName,
+            email: email
+
+        });
+
+        try {
+            await client.save();
+        }catch(err) {
+            console.log(err)
+        }
+        await res.json(client);
     });
-
-    try {
-        await appointment.save();
-        res.send("data good");
-        console.log("oifoijij")
-        console.log(DateNow.toLocaleDateString(undefined))
-
-    } catch(err) {
-        console.log(err)
-    }
-    await res.json(appointment);
-const client = new ClientModels(
-    {
-        /*firstName: "Benoit",
-        lastName: "tarentula",
-        emailAdress: "benoit.tarentula@gmail.com"*/
-        appointmentTitle : clientsTitle,
-        firstName: clientsfirstName,
-        lastName: clientsLastName,
-        emailAddress: clientsEmail,
-        appointmentComments : clientsComments,
-
-
-    });
-
-    try {
-        await client.save();
-    }catch(err) {
-        console.log(err)
-    }
-    await res.json(client);
-});
-
-// Express Server
-/*app.listen(3001,() => {
-    console.log('Server running correctly')
-
-});*/
 
 //READ : in that method i made a read in bdd, it's either global data or detailed with find{$where : { firstName: "Benoit" }} 
 app.get('/read', async (req,res) => {
@@ -98,7 +89,9 @@ app.get('/read', async (req,res) => {
     })
 })  
 
-app.listen(PORT, console.log('Server is running correctly'));
+app.listen(3001, () =>{
+    console.log("server on port 3001..");
+});
 
 
 
